@@ -1,0 +1,28 @@
+version: '3.9'
+services:
+  mysql-trashtracker:
+    container_name: mysql-trashtracker
+    image: mysql
+    ports:
+      - 3306:3306
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=trashtracker23
+      - MYSQL_PASSWORD=trashtracker23
+      - MYSQL_USER=trashtracker
+      - MYSQL_DATABASE=trashtracker-db
+    volumes:
+      - ./mysqlDB:/var/lib/meinsql/data
+  phpmyadmin-trashtracker:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma-trashtracker
+    depends_on:
+        - mysql-trashtracker
+    environment:
+        PMA_HOST: mysql-trashtracker
+    restart: always
+    ports:
+        - 8080:80
+
+# docker-compose -f docker-compose-trashtracker.yaml up -d
+# docker-compose -f docker-compose-trashtracker.yaml down
