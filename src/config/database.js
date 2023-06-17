@@ -1,4 +1,4 @@
-import User from "../model/userModal.js";
+// import User from "../model/userModal.js";
 import sequelize from "./connection.js";
 
 const connectToDatabase = async () => {
@@ -11,6 +11,6 @@ const connectToDatabase = async () => {
   }
 };
 
-User.sync(); // Sync the User model with the database
+// User.sync(); // Sync the User model with the database
 
 connectToDatabase();

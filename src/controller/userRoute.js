@@ -72,20 +72,22 @@ router.put("/", async (req, res, next) => {
 
 async function notifyUser(pEmail) {
   const transporter = nodemailer.createTransport({
-    host: "smtp.zoho.eu",
-    port: 465,
-    secure: true,
+    service: "gmail",
+
     auth: {
-      user: "hicoders_hrms@zohomail.eu",
-      pass: "MysHH3h!zwjSex!",
+      user: "abulaiti@hicoders.ch",
+      pass: "mzfufxsbnbukjggz",
     },
+    tls: { rejectUnauthorized: false },
+    ignoreTLS: true,
   });
 
   const info = await transporter.sendMail({
-    from: "hicoders_hrms@zohomail.eu",
+    from: "abulaiti@hicoders.ch",
     to: pEmail,
     subject: "Notification",
-    text: "welcome to Bloggy!!",
+    html: "welcome to trash tracker!!",
+    attachements: [],
   });
 
   console.log("Message sent: %s", info.messageId);
