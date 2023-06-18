@@ -13,6 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan("tiny"));
 // API
 app.use("/api/v1/users", userRoute);
+// localhost:5000/api/v1/users 
+
 app.use(errorHandler);
 
 
